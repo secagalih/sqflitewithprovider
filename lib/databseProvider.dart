@@ -40,6 +40,13 @@ class DatabaseProfider with ChangeNotifier {
     await db.delete(table, where: 'nama=?', whereArgs: [nama]);
   }
 
+  //Perintah mengedit data
+  Future<int> update(
+      String table, Map data, String where, String whereargs) async {
+    return await db
+        .update(table, data, where: '$where = ?', whereArgs: [whereargs]);
+  }
+
   //Perintah untuk menampilkan data
   Future<List<Map<String, dynamic>>> getData(String table) async {
     return await db.query(table);

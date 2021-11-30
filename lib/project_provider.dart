@@ -58,6 +58,29 @@ class ProjectProvider with ChangeNotifier {
     return _projectList;
   }
 
+//Mengedit project
+
+  Future editProject(
+      {String tasktabelName,
+      String namaproject,
+      String judulproject,
+      String keterangan,
+      String tanggal,
+      String where,
+      String whereArgs}) async {
+    String tabelname = tasktabelName.replaceAll(' ', '').toLowerCase();
+    await databaseProfider.update(
+        tabelname,
+        ProjectModel(
+          judul: judulproject,
+          keterangan: keterangan,
+          nama: namaproject,
+          tanggal: tanggal,
+        ).toMap(),
+        where,
+        whereArgs);
+  }
+
 //Membuat Task
   Future createTask({String tasknametable}) async {
     //untuk menghapus spasi
@@ -103,5 +126,27 @@ class ProjectProvider with ChangeNotifier {
   void deleteTask({String taskname, String tasktabelName}) async {
     String tabelname = tasktabelName.replaceAll(' ', '').toLowerCase();
     await databaseProfider.delete(table: 'task$tabelname', nama: taskname);
+  }
+
+//mengedit task
+  Future edittask(
+      {String tasktabelName,
+      String namatask,
+      String datapertama,
+      String datakedua,
+      String dataketiga,
+      String where,
+      String whereArgs}) async {
+    String tabelname = tasktabelName.replaceAll(' ', '').toLowerCase();
+    await databaseProfider.update(
+        tabelname,
+        TaskModel(
+                namatask: namatask,
+                datakedua: datakedua,
+                datapertama: datapertama,
+                dataketiga: dataketiga)
+            .toMap(),
+        where,
+        whereArgs);
   }
 }
