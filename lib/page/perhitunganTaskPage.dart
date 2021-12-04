@@ -15,9 +15,11 @@ class PerthitunganTaskPage extends StatefulWidget {
 class _PerthitunganTaskPageState extends State<PerthitunganTaskPage> {
   @override
   void initState() {
+    // untuk mengirim data perhitungan
     final perhitungantaskProvider =
         Provider.of<PerhitunganTask>(context, listen: false);
     perhitungantaskProvider.changeTaskModel = widget.task;
+// trigger rumus perhitungan
     perhitungantaskProvider.penjumlahan();
     perhitungantaskProvider.perkalian();
 
