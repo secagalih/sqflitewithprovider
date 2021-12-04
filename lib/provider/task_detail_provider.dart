@@ -1,17 +1,30 @@
 import 'package:flutter/cupertino.dart';
+import 'package:sqfprofider/model/task_model.dart';
 
 class PerhitunganTask with ChangeNotifier {
-  double penjumlahan({double dataPertama, double dataKedua}) {
-    double hasilJumlah = 0;
-    hasilJumlah = dataPertama + dataKedua;
+  TaskModel _taskModel;
 
-    return hasilJumlah;
+  set changeTaskModel(TaskModel task) {
+    _taskModel = task;
+    notifyListeners();
+  }
+
+  double _hasilJumlah = 0;
+  double _hasilKali = 0;
+
+  TaskModel get taskdata => _taskModel;
+  double get hasilKali => _hasilKali;
+  double get hasilJumlah => _hasilJumlah;
+
+  double penjumlahan() {
+    _hasilJumlah = _taskModel.datapertama + _taskModel.datakedua;
+
+    return _hasilJumlah;
   }
 
   double perkalian({double dataKedua, double dataKetiga}) {
-    double hasilJumlah = 0;
-    hasilJumlah = dataKetiga * dataKedua;
+    _hasilKali = _taskModel.dataketiga * _taskModel.datakedua;
 
-    return hasilJumlah;
+    return _hasilKali;
   }
 }

@@ -3,20 +3,28 @@ import 'package:provider/provider.dart';
 import 'package:sqfprofider/model/task_model.dart';
 import 'package:sqfprofider/provider/task_detail_provider.dart';
 
-class PerthitunganTaskPage extends StatelessWidget {
+class PerthitunganTaskPage extends StatefulWidget {
   final TaskModel task;
 
   const PerthitunganTaskPage({Key key, this.task}) : super(key: key);
+
+  @override
+  _PerthitunganTaskPageState createState() => _PerthitunganTaskPageState();
+}
+
+class _PerthitunganTaskPageState extends State<PerthitunganTaskPage> {
+  @override
+  void initState() {
+    final perhitungantaskProvider =
+        Provider.of<PerhitunganTask>(context, listen: false);
+    perhitungantaskProvider.changeTaskModel = widget.task;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final perhitungantaskProvider =
         Provider.of<PerhitunganTask>(context, listen: false);
-
-    double penmjumlahan = perhitungantaskProvider.penjumlahan(
-        dataPertama: task.datapertama, dataKedua: task.datakedua);
-
-    double perkalian = perhitungantaskProvider.perkalian(
-        dataKedua: task.datakedua, dataKetiga: task.dataketiga);
     return Scaffold(
       appBar: AppBar(
         title: Text('Perhitungan Task '),
@@ -32,12 +40,12 @@ class PerthitunganTaskPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('${task.datapertama} '),
+                Text('${widget.task.datapertama} '),
                 Text('+'),
-                Text(' ${task.datakedua}')
+                Text(' ${widget.task.datakedua}')
               ],
             ),
-            Text('$penmjumlahan'),
+            Text('${perhitungantaskProvider.hasilJumlah}'),
             SizedBox(
               height: 10,
             ),
@@ -45,12 +53,12 @@ class PerthitunganTaskPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('${task.datakedua} '),
+                Text('${widget.task.datakedua} '),
                 Text('X'),
-                Text(' ${task.dataketiga}')
+                Text(' ${widget.task.dataketiga}')
               ],
             ),
-            Text('$perkalian'),
+            Text('${perhitungantaskProvider.hasilKali}'),
           ],
         ),
       ),
