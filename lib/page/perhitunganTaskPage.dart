@@ -20,6 +20,7 @@ class _PerthitunganTaskPageState extends State<PerthitunganTaskPage> {
     perhitungantaskProvider.changeTaskModel = widget.task;
     perhitungantaskProvider.penjumlahan();
     perhitungantaskProvider.perkalian();
+
     super.initState();
   }
 

@@ -6,7 +6,6 @@ class PerhitunganTask with ChangeNotifier {
 
   set changeTaskModel(TaskModel task) {
     _taskModel = task;
-    notifyListeners();
   }
 
   double _hasilJumlah = 0;
@@ -18,13 +17,13 @@ class PerhitunganTask with ChangeNotifier {
 
   double penjumlahan() {
     _hasilJumlah = _taskModel.datapertama + _taskModel.datakedua;
-    notifyListeners();
+
     return _hasilJumlah;
   }
 
   double perkalian() {
     _hasilKali = _taskModel.dataketiga * _taskModel.datakedua;
-    notifyListeners();
+
     return _hasilKali;
   }
 }
