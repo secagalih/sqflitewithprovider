@@ -18,13 +18,13 @@ class PerhitunganTask with ChangeNotifier {
 
   double penjumlahan() {
     _hasilJumlah = _taskModel.datapertama + _taskModel.datakedua;
-
+    notifyListeners();
     return _hasilJumlah;
   }
 
-  double perkalian({double dataKedua, double dataKetiga}) {
+  double perkalian() {
     _hasilKali = _taskModel.dataketiga * _taskModel.datakedua;
-
+    notifyListeners();
     return _hasilKali;
   }
 }
