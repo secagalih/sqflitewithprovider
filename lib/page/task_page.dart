@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sqfprofider/project_provider.dart';
+import 'package:sqfprofider/page/perhitunganTaskPage.dart';
+import 'package:sqfprofider/provider/project_provider.dart';
 import 'package:sqfprofider/widget/taskitem.dart';
 
 class TaskPage extends StatefulWidget {
@@ -48,8 +49,16 @@ class _TaskPageState extends State<TaskPage> {
                         return Container(
                           padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                           width: double.maxFinite,
-                          child: TaskItem(
-                            value: projectProvider.listtask[index],
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => PerthitunganTaskPage(
+                                        task: projectProvider.listtask[index],
+                                      )));
+                            },
+                            child: TaskItem(
+                              value: projectProvider.listtask[index],
+                            ),
                           ),
                         );
                       },
@@ -70,16 +79,16 @@ class _TaskPageState extends State<TaskPage> {
               //penggunan perintah add project di halaman
               projectProvider.addTask(
                   tasknametable: widget.projectName,
-                  namatask: 'task pertama gaes',
-                  datapertama: 'data kesatuu',
-                  datakedua: 'data keduaa',
-                  dataketiga: 'data ketigaa');
+                  namatask: 'task perhitungan',
+                  datapertama: 10,
+                  datakedua: 11,
+                  dataketiga: 12);
             });
 
             //untuk menghapuss
-            projectProvider.deleteTask(
-                taskname: 'task pertama gaes',
-                tasktabelName: widget.projectName);
+            // projectProvider.deleteTask(
+            //     taskname: 'task pertama gaes',
+            //     tasktabelName: widget.projectName);
           },
           tooltip: 'Add Data',
           child: Icon(Icons.add),

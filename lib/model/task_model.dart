@@ -14,9 +14,9 @@ class TaskModel {
   });
 
   String namatask;
-  String datapertama;
-  String datakedua;
-  String dataketiga;
+  double datapertama;
+  double datakedua;
+  double dataketiga;
 
   factory TaskModel.fromJson(String str) => TaskModel.fromMap(json.decode(str));
 

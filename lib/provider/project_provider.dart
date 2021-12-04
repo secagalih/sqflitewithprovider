@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:sqflite/utils/utils.dart';
-import 'package:sqfprofider/databseProvider.dart';
+import 'package:sqfprofider/provider/databseProvider.dart';
 import 'package:sqfprofider/model/project_model.dart';
 import 'package:sqfprofider/model/task_model.dart';
 
@@ -97,9 +97,9 @@ class ProjectProvider with ChangeNotifier {
   void addTask(
       {String tasknametable,
       String namatask,
-      String datapertama,
-      String datakedua,
-      String dataketiga}) {
+      double datapertama,
+      double datakedua,
+      double dataketiga}) {
     if (databaseProfider != null) {
       String tabelname = tasknametable.replaceAll(' ', '').toLowerCase();
       databaseProfider.insert(
@@ -132,9 +132,9 @@ class ProjectProvider with ChangeNotifier {
   Future edittask(
       {String tasktabelName,
       String namatask,
-      String datapertama,
-      String datakedua,
-      String dataketiga,
+      double datapertama,
+      double datakedua,
+      double dataketiga,
       String where,
       String whereArgs}) async {
     String tabelname = tasktabelName.replaceAll(' ', '').toLowerCase();

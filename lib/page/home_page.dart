@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sqfprofider/page/task_page.dart';
-import 'package:sqfprofider/project_provider.dart';
+import 'package:sqfprofider/provider/project_provider.dart';
 import 'package:sqfprofider/widget/projectItem.dart';
 
 class HomePage extends StatefulWidget {

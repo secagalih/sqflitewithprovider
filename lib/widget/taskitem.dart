@@ -20,19 +20,19 @@ class TaskItem extends StatelessWidget {
           Row(
             children: [
               Text('Data Pertama '),
-              Text(value.datapertama),
+              Text('${value.datapertama}'),
             ],
           ),
           Row(
             children: [
               Text('Data Kedua '),
-              Text(value.datakedua),
+              Text('${value.datakedua}'),
             ],
           ),
           Row(
             children: [
               Text('Data Ketiga '),
-              Text(value.dataketiga),
+              Text('${value.dataketiga}'),
             ],
           )
         ],

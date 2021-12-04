@@ -32,7 +32,7 @@ class DatabaseProfider with ChangeNotifier {
   //Perintah Membuat task Database
   Future createTaskTable(String taskname) async {
     await db.execute(
-        'CREATE TABLE task$taskname (id INTEGER PRIMARY KEY AUTOINCREMENT, namatask TEXT, datapertama TEXT, datakedua TEXT, dataketiga TEXT)');
+        'CREATE TABLE task$taskname (id INTEGER PRIMARY KEY AUTOINCREMENT, namatask TEXT, datapertama REAL, datakedua REAL, dataketiga REAL)');
   }
 
   //Menghapus Data tabel
